@@ -1,16 +1,29 @@
 const puppeteer = require('puppeteer');
+var lineReader = require('line-reader');
+
+
 const C = require('./constants');
 const USERNAME_SELECTOR = '#user_input';
 const PASSWORD_SELECTOR = '#password_input';
 const CTA_SELECTOR = '#wrapper > div > div > section > div.login > div.login-right > form > input.btn.btn-default';
+
 const login_url = "https://open.kattis.com/login/email";
-const submit_url = "https://open.kattis.com/submit";
+var submit_url = "https://open.kattis.com/submit";
+const user_url = "https://open.kattis.com/users/test32";
+
 const BTN_SELECTOR = '#submit-solution-form > div > div:nth-child(4) > div.col-md-offset-1.col-md-3 > input.btn.btn-default'
-const SLCT_LANGUAGE = '#language_select';
-const SLCT_PBLM = '#problem_select';
+const SLCT_LANGUAGE = '#s2id_language_select > a';
+const LANGUAGE_INPUT = "#s2id_autogen2_search";
+
+const SLCT_PBLM = '#s2id_problem_select > a';
+const PBLM_INPUT = '#s2id_autogen1_search';
+
 const FILE_UPLD = '#sub_files_input';
 const FILE_DIR = "/home/moad/Desktop/ok.cpp";
+const TEXT_BTN_AREA = "#show_editor_button_sub_code";
+const TEXT_AREA  = "#sub_code > textarea";
 
+const SPAN_SUB = "#wrapper > div > div:nth-child(2) > section > table > tbody > tr:nth-child(3) > td.status.rejected.middle";
 
 var browser, page;
 async function startBrowser() {
@@ -24,51 +37,40 @@ async function closeBrowser(browser) {
 
 async function Login(url) {
   await page.goto(url);
-  await page.setRequestInterception(true);
-  page.on('request', (req) => {
-      if(req.resourceType() == 'stylesheet' || req.resourceType() == 'font' || req.resourceType() == 'image'){
-          req.abort();
-      }
-      else {
-          req.continue();
-      }
-  });
   await page.click(USERNAME_SELECTOR);
   await page.keyboard.type(C.username);
-  console.log("Email done");
   await page.click(PASSWORD_SELECTOR);
   await page.keyboard.type(C.password);
-  console.log("Password done");
   await page.click(CTA_SELECTOR);
-  console.log("Submitted done");
-  await page.waitForNavigation();
-  console.log("Done for now");
 }
+
+
 async function Submit(url){
+
   await page.goto(url);
-  await page.setRequestInterception(true);
-  page.on('request', (req) => {
-      if(req.resourceType() == 'stylesheet' || req.resourceType() == 'font' || req.resourceType() == 'image'){
-          req.abort();
-      }
-      else {
-          req.continue();
-      }
-  });
-  //Upload the file
-  const fileInput = await page.click(FILE_UPLD);
-  await fileInput.uploadFile(FILE_DIR);
+  //uploading the file
+  const input = await page.$('input[type=file]');
+  await input.uploadFile(FILE_DIR);
+  //selecting the pblm
   await page.click(SLCT_PBLM);
-  await page.keyboard.type("hello");
-  await page.click(SLCT_LANGUAGE);
-  await page.keyboard.type("C++");
+  await page.keyboard.type('hello');
+  await page.keyboard.press('Enter');
+  //submitting the solution
   await page.click(BTN_SELECTOR);
+  await page.screenshot({ path: './image.jpg', type: 'jpeg' });
+  console.log(page.url());
 }
+async function checksubmission(url){
+  await page.goto(url);
+
+}
+
 (async () => {
+
   await startBrowser();
   page.setViewport({width: 1366, height: 768});
   await Login(login_url);
-  console.log("Done logging");
   await Submit(submit_url);
   process.exit(0);
+
 })();
