@@ -19,6 +19,7 @@ program
       if (typeof pblm === "string")
           functions.submission(pblm);
       else
-          console.log("Invalid!!!!!!");
+          console.log("Invalid !!!!!!");
   });
+
 program.parse(process.argv);
