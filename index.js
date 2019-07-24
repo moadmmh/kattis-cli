@@ -1,5 +1,7 @@
-const program = require('commander');
+#!/usr/bin/env node
+
 const config = require('./config');
+const program = require('commander');
 const functions = require('./functions');
 
 program
@@ -19,3 +21,4 @@ program
       else
           console.log("Invalid!!!!!!");
   });
+program.parse(process.argv);
