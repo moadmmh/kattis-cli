@@ -5,7 +5,7 @@ const program = require('commander');
 const functions = require('./functions');
 
 program
-    .version('1.0.0', '-v, --version');
+    .version('1.0.1', '-v, --version');
 
 program.on('--help', () => {
     console.log('\n  All options:');
