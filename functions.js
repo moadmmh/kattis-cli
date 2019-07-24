@@ -26,12 +26,12 @@ async function Login(url) {
 }
 
 
-async function Submit(url,pblm){
+async function Submit(url,pblm,file_dir){
 
   await page.goto(url);
   //uploading the file
   const input = await page.$('input[type=file]');
-  await input.uploadFile(C.file_dir);
+  await input.uploadFile(file_dir);
   //selecting the pblm
   await page.click(C.slct_pblm);
   await page.keyboard.type(pblm);
@@ -44,14 +44,14 @@ async function checksubmission(url){
   await page.goto(url);
   //TODO
 }
-exports.submission = function(pblm){
+exports.submission = function(pblm,file_dir){
 (async () => {
 
   await startBrowser();
   page.setViewport({width: 1366, height: 768});
   console.log("Please Wait your problem is being submitted ...");
   await Login(C.login_url);
-  await Submit(C.submit_url,pblm);
+  await Submit(C.submit_url,pblm,file_dir);
   console.log("***********************************************************************")
   console.log(`* Your submission link is ${page.url()} *`);
   console.log("***********************************************************************")

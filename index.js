@@ -10,16 +10,24 @@ program
 program.on('--help', () => {
     console.log('\n  All options:');
     console.log('    -p, --problem              Problem ID from Kattis');
+    console.log('    -f, --file                 Source Code File To be submitted');
 });
 
 program
   .command('submit')
   .option('-p, --problem', 'Problem ID')
-  .action(function (pblm) {
-      if (typeof pblm === "string")
-          functions.submission(pblm);
+  .option('-f, --file', 'Source Code File')
+  .action(function (pblm,file) {
+      if (typeof pblm === "string" && typeof file === "string"){
+          var file_dir = process.cwd()+ "/" +file;
+          functions.submission(pblm,file_dir);
+        }
       else
           console.log("Invalid !!!!!!");
   });
-
+program
+  .command('config')
+  .action (function(){
+      config.userConfiguration();
+  });
 program.parse(process.argv);
