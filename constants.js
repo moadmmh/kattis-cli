@@ -1,6 +1,4 @@
 module.exports = {
-                   username: 'midouramosnap@yahoo.fr',
-                   password: 'babi1996',
                    username_selector : '#user_input',
                    password_selector : '#password_input',
                    cta_selector : '#wrapper > div > div > section > div.login > div.login-right > form > input.btn.btn-default',
