@@ -7,8 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
-    "type": "git",
-    "url": "git://github.com/moadmmh/kattis-cli.git"
+    "url": "git://github.com/moadmmh/kattis-cli.git."
   },
   "keywords": [
     "kattis"
@@ -16,9 +15,9 @@
   "author": "Moad Mohammed Elhebri",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/moadmmh/Kattis-CLI/issues"
+    "url": "https://github.com/moadmmh/kattis-cli/issues"
   },
-  "homepage": "https://github.com/moadmmh/Kattis-CLI/blob/master/README.md",
+  "homepage": "https://github.com/moadmmh/kattis-cli/blob/master/README.md",
   "bin": {
     "kattis": "./index.js"
   },
