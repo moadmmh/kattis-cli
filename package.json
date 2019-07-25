@@ -1,5 +1,5 @@
 {
-  "name": "kattis-cli",
+  "name": "@moadmmh/kattis-cli",
   "version": "1.0.3",
   "main": "index.js",
   "description": "\"Command line tool for Kattis OJ\"",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/moadmmh/Kattis-CLI"
+    "url": "git://github.com/moadmmh/kattis-cli.git"
   },
   "keywords": [
     "kattis"
