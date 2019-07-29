@@ -14,5 +14,7 @@ module.exports = {
                    file_dir : "/file/to/path",
                    text_btn_area : "#show_editor_button_sub_code",
                    text_area  : "#sub_code > textarea",
-                   span_sub : "#wrapper > div > div:nth-child(2) > section > table > tbody > tr:nth-child(3) > td.status.rejected.middle"
+                   score : "#wrapper > div > div > section > div > div > div.fr.score_wrapper > div > table > tbody > tr:nth-child(2) > td:nth-child(2)",
+                   span_sub : "#wrapper > div > div:nth-child(2) > section > table > tbody > tr:nth-child(3) > td.status.rejected.middle",
+                   rank : "#wrapper > div > div > section > div > div > div.fr.score_wrapper > div > table > tbody > tr:nth-child(2) > td:nth-child(1)"
                  }

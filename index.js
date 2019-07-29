@@ -3,14 +3,16 @@
 const config = require('./config');
 const program = require('commander');
 const functions = require('./functions');
+const users = require('./user');
 
 program
-    .version('1.0.1', '-v, --version');
+    .version('1.0.4', '-v, --version');
 
 program.on('--help', () => {
     console.log('\n  All options:');
     console.log('    -p, --problem              Problem ID from Kattis');
     console.log('    -f, --file                 Source Code File To be submitted');
+    console.log('    -u, --user                 Username to be chosen');
 });
 
 program
@@ -23,11 +25,23 @@ program
           functions.submission(pblm,file_dir);
         }
       else
-          console.log("Invalid !!!!!!");
+          console.log("Invalid !!");
   });
+
 program
   .command('config')
   .action (function(){
       config.userConfiguration();
   });
+
+program
+  .command('user')
+  .option('-u, --user', 'Username')
+  .action (function(usr){
+    if (typeof usr === "string")
+      users.userinfo(usr);
+    else
+      console.log("Invalid !!")
+  });
+
 program.parse(process.argv);
