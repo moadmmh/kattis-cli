@@ -19,12 +19,16 @@ Kattis-CLI is a command-line interface tool for [Kattis OJ](https://open.kattis.
   - #### Submission 
   
     `kattis submit -p <pblmid> -f <sourcefile>`
+  
+  - #### User Info
+  
+    `kattis user -u <username>`
 
 ### Features to be added 
 
-  - [ ] Submission Status
+  - [x] User Ranking ,Current Score.
   
-  - [ ] User Ranking , Current Score
+  - [ ] Submission Status.
   
-  - [ ] Ongoing and Upcoming Contests
+  - [ ] Ongoing and Upcoming Contests.
   
