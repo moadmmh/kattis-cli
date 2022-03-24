@@ -28,6 +28,6 @@
     "prompt": "^1.0.0",
     "puppeteer": "^1.18.1",
     "request-promise": "^4.2.4",
-    "minimist": ">=0.2.1"
+    "minimist": ">=1.2.6"
   }
 }
